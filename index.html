@@ -13,11 +13,21 @@
             theme: {
                 extend: {
                     colors: {
-                        'dark-primary': '#0a0a0a', // Casi negro para fondo principal
-                        'dark-secondary': '#1f2937', // Gris oscuro para tarjetas
-                        'accent-green': '#10b981', // Verde Esmeralda para Estabilidad y Crecimiento
-                        'accent-yellow': '#fbbf24', // Amarillo Ámbar (Oro) para Acción y Riqueza
-                        'highlight-blue': '#3b82f6', // Azul para Destacados/Legal
+                        'dark-primary': '#0a0a0a', // Casi negro para fondo principal (MANTENIDO)
+                        'dark-secondary': '#232a35', // Gris oscuro para tarjetas (ACTUALIZADO: Más claro)
+                        
+                        // Paleta de Crecimiento/Estabilidad (Verde)
+                        'accent-green': '#059669', // Verde Esmeralda Profundo (ACTUALIZADO: para seriedad)
+                        'accent-green-light': '#10b981', // Verde Esmeralda original (para hover/luz)
+
+                        // Paleta de Acción/Riqueza (Oro)
+                        'accent-yellow': '#fbbf24', // Amarillo Ámbar (Oro) - Base 
+                        'amber-base': '#facc15', // Base para degradado (ACTUALIZADO)
+                        'amber-dark': '#f59e0b', // Oscuro para degradado (ACTUALIZADO)
+                        
+                        // Otros Colores
+                        'highlight-blue': '#2563eb', // Azul para Destacados/Legal (ACTUALIZADO: Más sobrio)
+                        'text-warm-gray': '#a1a1aa', // Nuevo gris neutro para balance
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -32,11 +42,18 @@
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a; /* Fondo principal */
         }
+        
+        /* Divisor de sección con el nuevo verde profundo */
         .section-divider {
             height: 2px;
-            /* Gradiente a Verde Esmeralda */
-            background: linear-gradient(to right, #1f2937, #10b981, #1f2937);
+            /* Gradiente a Verde Esmeralda Profundo */
+            background: linear-gradient(to right, #232a35, #059669, #232a35);
             margin: 4rem 0;
+        }
+
+        /* Nuevo efecto de sombra sutil para el CTA */
+        .shadow-glow {
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5); /* Sombra de Oro/Amarillo */
         }
         
         /* --- ESTILOS DE LA GALERÍA ORIGINAL RESTAURADOS --- */
@@ -72,7 +89,8 @@
         }
         .nav-button:hover {
             opacity: 1;
-            background-color: rgba(16, 185, 129, 0.7); /* Verde Esmeralda en hover */
+            /* Usando el verde claro para el hover */
+            background-color: rgba(16, 185, 129, 0.7); 
         }
         /* Ajuste de posición de botones para evitar colisión con el borde en móviles */
         #prev-button { left: 0.5rem; }
@@ -117,6 +135,7 @@
 
         .close-button:hover,
         .close-button:focus {
+            /* Usando el verde claro para el hover */
             color: #10b981; 
             text-decoration: none;
             cursor: pointer;
@@ -137,6 +156,7 @@
 
         .modal-nav-button:hover {
             opacity: 1;
+            /* Usando el verde claro para el hover */
             color: #10b981; 
         }
         
@@ -164,10 +184,11 @@
     <!-- Encabezado y Navegación -->
     <header class="bg-dark-secondary shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Título con acento Verde Esmeralda -->
+            <!-- Título con acento Verde Esmeralda Profundo -->
             <h1 class="text-xl sm:text-2xl font-bold text-accent-green tracking-wide">
                 QUIROGA <span class="text-accent-yellow">CENTRAL</span>
             </h1>
+            <!-- Botón de Contacto con Verde Light para hover -->
             <a href="#contacto" class="text-sm sm:text-base bg-accent-yellow text-gray-900 font-semibold py-2 px-4 rounded-lg shadow-xl hover:bg-amber-300 transition duration-300">
                 Contactar Ahora
             </a>
@@ -181,7 +202,7 @@
             <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-white">
                 Doble Potencial: Hogar e Inversión Segura
             </h2>
-            <!-- Subtítulo con datos clave de renta y ACLARACIÓN PEATONAL -->
+            <!-- Subtítulo con datos clave de renta y ACLARACIÓN PEATONAL (Usando verde profundo) -->
             <p class="text-lg sm:text-xl text-accent-green font-light max-w-4xl mx-auto">
                 Casa Bifamiliar de <span class="font-bold">208 m2 y 2 apartamentos</span> con Renta y 
                 <span class="font-extrabold text-accent-yellow">🚶‍♂️ Acceso Únicamente Peatonal .</span>
@@ -190,7 +211,7 @@
 
         <!-- Sección de Galería de Fotos Interactiva (Mantenida) -->
         <section id="galeria" class="mb-16">
-            <!-- Título con acento Verde Esmeralda -->
+            <!-- Título con acento Verde Esmeralda Profundo -->
             <h3 class="text-2xl sm:text-3xl font-bold text-accent-green mb-6 border-b border-accent-green pb-2">Galería de Impacto</h3>
             
             <!-- Contenedor del Carrusel -->
@@ -214,8 +235,8 @@
                 </button>
             </div>
 
-            <!-- Indicador de Posición -->
-            <p id="image-counter" class="text-center text-gray-500 mt-4 italic text-xs sm:text-sm">
+            <!-- Indicador de Posición (Usando gris neutro) -->
+            <p id="image-counter" class="text-center text-text-warm-gray mt-4 italic text-xs sm:text-sm">
                 Foto 1 de 7 (Haz clic en la imagen para ver en pantalla completa)
             </p>
         </section>
@@ -226,12 +247,13 @@
         <section class="mb-16">
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-10 items-center">
                 <!-- Columna de Precio y Ficha Rápida -->
+                <!-- Usando fondo secundario actualizado -->
                 <div class="lg:col-span-3 bg-dark-secondary p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700">
                     <div class="text-center lg:text-left">
                         <p class="text-4xl sm:text-5xl font-extrabold text-white mb-2">
                             $ 390.000.000 COP
                         </p>
-                        <!-- Énfasis con acento Verde Esmeralda -->
+                        <!-- Énfasis con acento Verde Esmeralda Profundo -->
                         <p class="text-lg sm:text-xl text-accent-green font-medium mb-4">
                             Precio de Venta <span class="text-accent-yellow">(Negociable con Apoyo en Crédito)</span>
                         </p>
@@ -258,16 +280,20 @@
                     <h4 class="text-2xl font-extrabold text-accent-yellow flex items-center justify-center lg:justify-start mb-2">
                         <span class="mr-2">💰</span> Oportunidad de Inversión
                     </h4>
+                    <!-- Usando gris neutro para el texto de la lista -->
                     <ul class="text-gray-300 space-y-2 text-sm sm:text-base ml-2">
                         <li class="flex items-start">
+                            <!-- Usando verde profundo para el check -->
                             <span class="text-accent-green font-bold mr-2 mt-0.5 text-lg">✓</span>
                             <p>Genera doble renta mensual ($2.127.000 COP) desde el primer día.</p>
                         </li>
                         <li class="flex items-start">
+                            <!-- Usando verde profundo para el check -->
                             <span class="text-accent-green font-bold mr-2 mt-0.5 text-lg">✓</span>
                             <p>Adquiere valorización asegurada al legalizar las mejoras (Cuerpo Cierto).</p>
                         </li>
                         <li class="flex items-start">
+                            <!-- Usando verde profundo para el check -->
                             <span class="text-accent-green font-bold mr-2 mt-0.5 text-lg">✓</span>
                             <p>Ubicación privilegiada: Frente a la Alcaldía Local de R. Uribe Uribe (Solo cruzando la calle).</p>
                         </li>
@@ -286,9 +312,9 @@
                     ¿Por qué esta Casa es una <span class="text-accent-yellow">Oportunidad Única</span>?
                 </h3>
                 
-                <!-- BOTÓN DE LECTOR DE AUDIO (Nuevo) -->
+                <!-- BOTÓN DE LECTOR DE AUDIO (Usando verde light para hover) -->
                 <button id="tts-ventajas-button" 
-                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green transition duration-300" 
+                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green-light transition duration-300" 
                         data-target-id="text-container-ventajas" 
                         aria-label="Escuchar ventajas clave">
                     <span class="mr-2 text-lg">🔊</span> Audio
@@ -300,8 +326,10 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <!-- Ventaja 1: Doble Renta y Estabilidad -->
-                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <!-- Usando verde profundo para el borde -->
+                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green-light/50 transition duration-300">
                         <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">💰</span>
+                        <!-- Usando verde profundo para el título -->
                         <h4 class="text-xl font-bold text-accent-green mb-2">Doble Renta Estable</h4>
                         <p class="text-gray-400 text-sm sm:text-base">
                             Diseñada como <span class="font-semibold">Vivienda Bifamiliar</span>. Vive en uno y arrienda el otro, o alquila ambos. <span class="font-semibold text-white">Ingreso estable por arriendo de $2.127.000 COP.</span>
@@ -309,8 +337,10 @@
                     </div>
 
                     <!-- Ventaja 2: Espacio y Capacidad (Icono cambiado a 🏠) -->
-                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <!-- Usando verde profundo para el borde -->
+                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green-light/50 transition duration-300">
                         <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🏠</span>
+                        <!-- Usando verde profundo para el título -->
                         <h4 class="text-xl font-bold text-accent-green mb-2">Máximo Espacio: 8 Habitaciones</h4>
                         <p class="text-gray-400 text-sm sm:text-base">
                             Con <span class="font-semibold">208 M2</span>, ideal para familia numerosa o para generar <span class="font-semibold text-white">múltiples ingresos</span>. Una de las propiedades más amplias y versátiles de la zona.
@@ -318,8 +348,10 @@
                     </div>
                     
                     <!-- Ventaja 3: Financiación Asistida -->
-                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <!-- Usando verde profundo para el borde -->
+                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green-light/50 transition duration-300">
                         <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🤝</span>
+                        <!-- Usando verde profundo para el título -->
                         <h4 class="text-xl font-bold text-accent-green mb-2">Apoyo en la Financiación</h4>
                         <p class="text-gray-400 text-sm sm:text-base">
                             El propietario puede apoyar al comprador a tramitar un préstamo, facilitando la compra <span class="font-semibold">incluso con la hipoteca activa</span>. ¡Precio de venta negociable!
@@ -327,8 +359,10 @@
                     </div>
                     
                     <!-- Ventaja 4: ACCESO CONTROLADO -->
-                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <!-- Usando verde profundo para el borde -->
+                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green-light/50 transition duration-300">
                         <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🔒</span>
+                        <!-- Usando verde profundo para el título -->
                         <h4 class="text-xl font-bold text-accent-green mb-2">Área de Entrada Controlada</h4>
                         <p class="text-gray-400 text-sm sm:text-base">
                             Cuenta con una zona de entrada <span class="font-semibold">enrejada y amplia</span>, perfecta para la <span class="font-semibold">seguridad y recepción</span>. Ideal para <span class="font-semibold">guardar motos o bicicletas</span> de forma segura.
@@ -336,8 +370,10 @@
                     </div>
 
                     <!-- Ventaja 5: INFRAESTRUCTURA DE RENTA (ICONO CAMBIADO A 💡) -->
-                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <!-- Usando verde profundo para el borde -->
+                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green-light/50 transition duration-300">
                         <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">💡</span>
+                        <!-- Usando verde profundo para el título -->
                         <h4 class="text-xl font-bold text-accent-green mb-2">Independencia Total de Servicios</h4>
                         <p class="text-gray-400 text-sm sm:text-base">
                             Máximo control de gastos: Cada unidad tiene <span class="font-semibold">contador independiente de luz y gas</span>. Además, cuenta con un <span class="font-semibold">medidor de agua interno</span> para cálculo exacto del consumo por apartamento.
@@ -345,8 +381,10 @@
                     </div>
                     
                     <!-- Ventaja 6: POTENCIAL DE EXPANSIÓN -->
-                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <!-- Usando verde profundo para el borde -->
+                    <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green-light/50 transition duration-300">
                         <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🏗️</span>
+                        <!-- Usando verde profundo para el título -->
                         <h4 class="text-xl font-bold text-accent-green mb-2">Potencial de Expansión Inmediato</h4>
                         <p class="text-gray-400 text-sm sm:text-base">
                             La casa cuenta con la estructura para un <span class="font-semibold">tercer piso</span>, y ya tiene un <span class="font-semibold">tercer contador de energía</span> instalado y listo para usar en esa futura ampliación o construcción.
@@ -362,12 +400,12 @@
         <!-- Sección de Descripción Detallada y Distribución (CON BOTÓN DE AUDIO) -->
         <section id="descripcion" class="mb-8">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-                <!-- Título con acento Verde Esmeralda -->
+                <!-- Título con acento Verde Esmeralda Profundo -->
                 <h3 class="text-2xl sm:text-3xl font-bold text-accent-green mb-3 sm:mb-0">Descripción de la Propiedad</h3>
                 
-                <!-- BOTÓN DE LECTOR DE AUDIO (Refactorizado) -->
+                <!-- BOTÓN DE LECTOR DE AUDIO (Usando verde light para hover) -->
                 <button id="tts-descripcion-button" 
-                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green transition duration-300" 
+                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green-light transition duration-300" 
                         data-target-id="text-container-descripcion" 
                         aria-label="Escuchar descripción">
                     <span class="mr-2 text-lg">🔊</span> Audio
@@ -375,21 +413,25 @@
             </div>
 
 
+            <!-- Usando fondo secundario actualizado -->
             <div id="text-container-descripcion" class="bg-dark-secondary p-6 sm:p-8 rounded-2xl shadow-2xl">
                 <!-- Párrafo CLAVE con alto contraste para la restricción (EN AMARILLO) -->
                 <p class="text-base sm:text-xl text-accent-yellow font-bold mb-6" data-original-content>
                     Linda casa en venta en el barrio <span class="font-semibold">Quiroga Central</span>, ubicada en una tranquila <span class="underline">CARRERA PEATONAL</span>. Esto garantiza un entorno residencial seguro y libre de ruido.
                 </p>
                 <!-- Párrafo de Ubicación (Cercanía a la Alcaldía) -->
-                <p class="text-base sm:text-lg text-gray-300 mb-6">
+                <!-- Usando gris neutro para el texto principal -->
+                <p class="text-base sm:text-lg text-text-warm-gray mb-6">
                     Su ubicación es excelente: está <span class="font-semibold">a una calle de la Alcaldía Local</span> de Rafael Uribe Uribe, sobre la vía peatonal. Su configuración de <span class="font-semibold">Vivienda Bifamiliar</span> garantiza flexibilidad y un retorno de inversión inmediato.
                 </p>
                 
                 <h4 class="text-xl sm:text-2xl font-semibold text-white mb-4">Distribución (Total: 8 Habitaciones, 2 Baños):</h4>
                 <!-- Párrafo enfatizando la distribución idéntica -->
-                <p class="text-base sm:text-lg text-gray-300 mb-4">
+                <!-- Usando gris neutro para el texto principal -->
+                <p class="text-base sm:text-lg text-text-warm-gray mb-4">
                     <span class="font-semibold">Inversión Optimizada:</span> Ambos apartamentos (Primer y Segundo Piso) tienen una distribución exactamente <span class="font-semibold">IDÉNTICA</span>, facilitando la administración.
                 </p>
+                <!-- Usando gris neutro para el texto de la lista -->
                 <ul class="list-disc list-inside space-y-3 text-gray-400 ml-4 text-sm sm:text-base">
                     <li>
                         <span class="font-bold text-accent-yellow">Cada Apartamento (x2) incluye:</span> 
@@ -398,9 +440,11 @@
                 </ul>
 
                 <!-- Bloque Secundario para Hipoteca -->
+                <!-- Usando amarillo en el borde -->
                 <div class="mt-6 p-4 bg-gray-800 rounded-lg border-l-4 border-accent-yellow">
                     <h5 class="text-lg font-bold text-accent-yellow mb-2">SOLUCIÓN DE FINANCIACIÓN INMEDIATA</h5>
-                    <p class="text-gray-300 text-sm">
+                    <!-- Usando gris neutro para el texto -->
+                    <p class="text-text-warm-gray text-sm">
                         La propiedad tiene una hipoteca activa, sin embargo, esto <span class="font-semibold">no es un impedimento</span>. El propietario le <span class="font-semibold">brinda apoyo directo</span> para gestionar un préstamo hipotecario con entidades de <span class="font-semibold">tasas reguladas</span>, simplificando su proceso de compra.
                     </p>
                 </div>
@@ -410,19 +454,22 @@
         <!-- DETALLES IMPORTANTES Y LEGAL (CON BOTÓN DE AUDIO) -->
         <section id="detalles-legales" class="mb-16">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                <!-- Título con acento Azul Legal actualizado -->
                 <h3 class="text-2xl sm:text-3xl font-bold text-highlight-blue mb-3 sm:mb-0">🔎 Información Legal y Técnica</h3>
                 
-                <!-- BOTÓN DE LECTOR DE AUDIO -->
+                <!-- BOTÓN DE LECTOR DE AUDIO (Usando verde light para hover) -->
                 <button id="tts-legal-button" 
-                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green transition duration-300" 
+                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green-light transition duration-300" 
                         data-target-id="text-container-legal" 
                         aria-label="Escuchar información legal">
                     <span class="mr-2 text-lg">🔊</span> Audio
                 </button>
             </div>
             
+            <!-- Usando azul legal en el borde -->
             <div id="text-container-legal" class="bg-highlight-blue/10 p-6 sm:p-8 rounded-2xl shadow-2xl border-2 border-highlight-blue">
-                <ul class="space-y-4 text-gray-300 text-sm sm:text-base">
+                <!-- Usando gris neutro para el texto principal -->
+                <ul class="space-y-4 text-text-warm-gray text-sm sm:text-base">
                     <!-- Detalle 1: Remodelación y Redes -->
                     <li class="flex items-start">
                         <span class="text-accent-yellow text-xl font-extrabold mr-2">1.</span>
@@ -445,8 +492,9 @@
                         </div>
                     </li>
                     <!-- Detalle 4: Oportunidad de Valorización -->
+                    <!-- Usando verde profundo en el texto principal y amarillo en el icono -->
                     <li class="flex items-start bg-highlight-blue/20 p-3 rounded-lg mt-4">
-                        <span class="text-accent-green text-xl font-extrabold mr-2">💡</span>
+                        <span class="text-accent-yellow text-xl font-extrabold mr-2">💡</span>
                         <div>
                             <span class="font-bold text-accent-green">OPORTUNIDAD DE VALORIZACIÓN:</span> Esto representa una <span class="font-semibold">excelente oportunidad de ganancia</span> para el nuevo propietario, pues las mejoras pueden legalizarse fácilmente con el acompañamiento de un profesional, incrementando el valor patrimonial y comercial.
                         </div>
@@ -463,9 +511,9 @@
                 <!-- Título genérico para agrupar el enfoque -->
                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-0">Doble Enfoque: <span class="text-accent-yellow">Vive</span> o <span class="text-accent-green">Invierte</span></h3>
 
-                <!-- BOTÓN DE LECTOR DE AUDIO -->
+                <!-- BOTÓN DE LECTOR DE AUDIO (Usando verde light para hover) -->
                 <button id="tts-enfoque-button" 
-                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green transition duration-300" 
+                        class="tts-button flex items-center bg-gray-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-accent-green-light transition duration-300" 
                         data-target-id="text-container-enfoque" 
                         aria-label="Escuchar doble enfoque">
                     <span class="mr-2 text-lg">🔊</span> Audio
@@ -475,11 +523,14 @@
             <div id="text-container-enfoque" class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
                 <!-- Bloque 1: PARA VIVIR (Icono cambiado a 🏠) -->
+                <!-- Usando fondo secundario actualizado y borde verde profundo -->
                 <div id="vivienda" class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-l-4 border-accent-green">
+                    <!-- Usando verde profundo para el título -->
                     <h3 class="text-2xl font-bold text-accent-green mb-3 flex items-center">
                         <span class="mr-2 text-3xl">🏠</span> Para Vivir (Hogar y Comodidad)
                     </h3>
-                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    <!-- Usando gris neutro para el texto principal -->
+                    <p class="text-text-warm-gray text-sm sm:text-base leading-relaxed">
                         Vive en un sector central, tranquilo y con excelente movilidad.
                         Ubicada justo frente a la Alcaldía Local de Rafael Uribe Uribe, esta casa en Quiroga Central te ofrece comodidad, seguridad y cercanía a todo: transporte (TransMilenio y SITP), colegios, parques, comercio y servicios.
                         Su diseño bifamiliar permite disfrutar amplios espacios con independencia y privacidad, perfecta para familias que buscan crecer o vivir cerca de todo sin perder la tranquilidad del barrio.
@@ -487,11 +538,13 @@
                 </div>
 
                 <!-- Bloque 2: PARA INVERTIR -->
+                <!-- Usando fondo secundario actualizado y borde amarillo -->
                 <div id="inversion" class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-l-4 border-accent-yellow">
                     <h3 class="text-2xl font-bold text-accent-yellow mb-3 flex items-center">
                         <span class="mr-2 text-3xl">💰</span> Para Invertir (Renta y Valorización)
                     </h3>
-                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    <!-- Usando gris neutro para el texto principal -->
+                    <p class="text-text-warm-gray text-sm sm:text-base leading-relaxed">
                         Una propiedad con doble renta inmediata y alto potencial de valorización.
                         En un sector de alta demanda como Quiroga Central, esta casa bifamiliar ofrece dos apartamentos independientes, cada uno con servicios separados, ideal para arrendar y generar ingresos constantes.
                         Además, ya cuenta con un tercer contador instalado, preparado para una futura ampliación.
@@ -502,28 +555,32 @@
         </section>
 
         <!-- PÁRRAFO EMOCIONAL DE CIERRE (Icono cambiado a 🏠) -->
+        <!-- Usando fondo secundario actualizado -->
         <section class="text-center mb-16 p-6 sm:p-8 bg-dark-secondary/50 rounded-2xl border border-gray-700">
-            <p class="text-lg sm:text-2xl italic font-light text-gray-200">
+            <!-- Usando gris neutro para el texto principal -->
+            <p class="text-lg sm:text-2xl italic font-light text-text-warm-gray">
                 <span class="font-semibold text-accent-yellow">🏠 Una casa amplia, remodelada y lista para disfrutar.</span> 
                 Perfecta para familias que valoran la ubicación, la tranquilidad y la oportunidad de crecer con una <span class="font-semibold">inversión segura</span> y de doble retorno.
             </p>
         </section>
 
 
-        <!-- Call to Action Final (Contacto - Mantenido) -->
-        <!-- Fondo con acento Verde Esmeralda para mayor impacto -->
-        <section id="contacto" class="text-center bg-accent-green/10 p-8 sm:p-10 rounded-2xl shadow-2xl border border-accent-green">
+        <!-- Call to Action Final (Contacto - ACTUALIZADO CON DEGRADADO Y SOMBRA GLOW) -->
+        <!-- Fondo con degradado Verde Profundo a Dorado -->
+        <section id="contacto" class="text-center p-8 sm:p-10 rounded-2xl shadow-2xl border-2 border-accent-yellow"
+            style="background: linear-gradient(135deg, #059669, #fbbf24);">
             <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
                 ¡Agenda tu Visita Hoy!
             </h3>
-            <p class="text-base sm:text-xl text-gray-300 mb-6">
+            <p class="text-base sm:text-xl text-gray-900 font-semibold mb-6">
                 Recibe fotos adicionales, videos del interior y resuelve tus dudas de financiación.
             </p>
-            <!-- Botón de CTA con acento Amarillo (El más alto contraste y acción) -->
-            <a href="#" target="_blank" id="whatsapp-link-final" class="inline-block bg-accent-yellow text-gray-900 text-xl sm:text-2xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-lg shadow-2xl hover:bg-amber-300 transition duration-300 transform hover:scale-105">
+            <!-- Botón de CTA con degradado Oro y sombra Glow -->
+            <a href="#" target="_blank" id="whatsapp-link-final" 
+               class="inline-block bg-gradient-to-r from-amber-base to-amber-dark text-gray-900 text-xl sm:text-2xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-lg shadow-2xl shadow-glow hover:from-amber-dark hover:to-amber-base transition duration-300 transform hover:scale-105">
                 📞 Contáctame al WhatsApp (322 700 2789)
             </a>
-            <p class="mt-4 text-xs sm:text-sm text-gray-400">
+            <p class="mt-4 text-xs sm:text-sm text-gray-900 font-medium">
                 Valor $390.000.000 negociables. Asesor: José Jimy Guluma Criollo.
             </p>
         </section>
@@ -681,15 +738,16 @@
             // --- Lógica de Síntesis de Voz (TTS) (Actualizada para múltiples botones) ---
             
             const updateAudioButton = (button, isSpeakingNow) => {
-                const span = button.querySelector('span');
+                const greenLightColor = tailwind.config.theme.extend.colors['accent-green-light']; // #10b981
+                
                 if (isSpeakingNow) {
                     button.innerHTML = '<span class="mr-2 text-lg">🛑</span> Detener';
-                    button.classList.remove('bg-gray-700', 'hover:bg-accent-green');
+                    button.classList.remove('bg-gray-700', `hover:bg-[${greenLightColor}]`);
                     button.classList.add('bg-red-600', 'hover:bg-red-700');
                 } else {
                     button.innerHTML = '<span class="mr-2 text-lg">🔊</span> Audio';
                     button.classList.remove('bg-red-600', 'hover:bg-red-700');
-                    button.classList.add('bg-gray-700', 'hover:bg-accent-green');
+                    button.classList.add('bg-gray-700', 'hover:bg-accent-green-light');
                 }
             };
             
