@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título actualizado para reflejar la Renta -->
+    <title>Doble Potencial: Casa de 8 Habs. y Renta en Quiroga Central, Bogotá</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración para usar la fuente Inter y colores (VERDE ESMERALDA y ORO) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-primary': '#0a0a0a', // Casi negro para fondo principal
+                        'dark-secondary': '#1f2937', // Gris oscuro para tarjetas
+                        'accent-green': '#10b981', // Verde Esmeralda para Estabilidad y Crecimiento
+                        'accent-yellow': '#fbbf24', // Amarillo Ámbar (Oro) para Acción y Riqueza
+                        'highlight-blue': '#3b82f6', // Azul para Destacados/Legal
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para la elegancia en modo oscuro */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Fondo principal */
+        }
+        .section-divider {
+            height: 2px;
+            /* Gradiente a Verde Esmeralda */
+            background: linear-gradient(to right, #1f2937, #10b981, #1f2937);
+            margin: 4rem 0;
+        }
+        
+        /* --- ESTILOS DE LA GALERÍA ORIGINAL RESTAURADOS --- */
+        
+        /* Contenedor principal de la galería */
+        #gallery-carousel {
+            position: relative;
+        }
+
+        /* Visor de Imagen Principal (Ajuste de Alto y Flexbox para centrado) */
+        #main-image-viewer {
+            transition: height 0.3s ease;
+            max-height: 80vh; 
+        }
+
+        /* Estilo para los botones de navegación (flechas) */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white;
+            padding: 1rem 0.5rem;
+            border-radius: 9999px; 
+            opacity: 0.7;
+            transition: opacity 0.3s, background-color 0.3s;
+            cursor: pointer;
+            line-height: 1; 
+            font-size: 2rem;
+            border: none;
+            outline: none;
+        }
+        .nav-button:hover {
+            opacity: 1;
+            background-color: rgba(16, 185, 129, 0.7); /* Verde Esmeralda en hover */
+        }
+        /* Ajuste de posición de botones para evitar colisión con el borde en móviles */
+        #prev-button { left: 0.5rem; }
+        #next-button { right: 0.5rem; }
+        
+        /* Estilos del Modal */
+        #image-modal {
+            display: none;
+            position: fixed;
+            z-index: 100; 
+            padding-top: 50px; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95); /* Fondo más oscuro para inmersión */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal-content {
+            margin: auto;
+            display: block;
+            width: 95%; 
+            max-width: 1200px;
+            max-height: 90vh; 
+            object-fit: contain; 
+        }
+
+        /* Botón de cierre */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #f1f1f1;
+            font-size: 50px; 
+            font-weight: lighter; 
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #10b981; 
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Botones de navegación del modal */
+        .modal-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 3rem; 
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .modal-nav-button:hover {
+            opacity: 1;
+            color: #10b981; 
+        }
+        
+        #modal-prev { left: 10px; } 
+        #modal-next { right: 10px; } 
+
+        @media (min-width: 1024px) {
+            /* Desktop adjustments */
+            .modal-nav-button {
+                font-size: 4rem; 
+            }
+            #modal-prev { left: 20px; }
+            #modal-next { right: 20px; }
+            .close-button {
+                top: 15px;
+                right: 35px;
+                font-size: 40px;
+            }
+        }
+        
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Encabezado y Navegación -->
+    <header class="bg-dark-secondary shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Título con acento Verde Esmeralda -->
+            <h1 class="text-xl sm:text-2xl font-bold text-accent-green tracking-wide">
+                QUIROGA <span class="text-accent-yellow">CENTRAL</span>
+            </h1>
+            <a href="#contacto" class="text-sm sm:text-base bg-accent-yellow text-gray-900 font-semibold py-2 px-4 rounded-lg shadow-xl hover:bg-amber-300 transition duration-300">
+                Contactar Ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- Sección Principal: Impacto y Precio -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+        <section class="text-center mb-16">
+            <!-- Título principal actualizado -->
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-white">
+                Doble Potencial: Hogar e Inversión Segura
+            </h2>
+            <!-- Subtítulo con datos clave de renta y ACLARACIÓN PEATONAL -->
+            <p class="text-lg sm:text-xl text-accent-green font-light max-w-4xl mx-auto">
+                Casa Bifamiliar de <span class="font-bold">208 $m^2$ y 8 Habitaciones</span> con Renta y 
+                <span class="font-extrabold text-accent-yellow">🚶‍♂️ Acceso Únicamente Peatonal (CERO vehículos).</span>
+            </p>
+        </section>
+
+        <!-- Sección de Galería de Fotos Interactiva (Mantenida) -->
+        <section id="galeria" class="mb-16">
+            <!-- Título con acento Verde Esmeralda -->
+            <h3 class="text-2xl sm:text-3xl font-bold text-accent-green mb-6 border-b border-accent-green pb-2">Galería de Impacto</h3>
+            
+            <!-- Contenedor del Carrusel -->
+            <div id="gallery-carousel" class="relative">
+                <!-- Visor de Imagen Principal -->
+                <div id="main-image-viewer" class="bg-dark-secondary h-auto min-h-[300px] max-h-[80vh] rounded-xl flex items-center justify-center shadow-2xl overflow-hidden p-1 sm:p-2 cursor-pointer">
+                    <img id="main-image" 
+                         src="https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d899c06b8_infocdn__aavkwtdhlv441qcxcdfqlovazgmrztbmabazzttcjpg.jpg" 
+                         alt="Foto principal de la propiedad (Clic para ver en grande)" 
+                         class="w-full h-full object-contain transition duration-500 ease-in-out">
+                </div>
+                
+                <!-- Botón de Navegación: Anterior -->
+                <button id="prev-button" class="nav-button" aria-label="Imagen anterior">
+                    &lt;
+                </button>
+                
+                <!-- Botón de Navegación: Siguiente -->
+                <button id="next-button" class="nav-button" aria-label="Imagen siguiente">
+                    &gt;
+                </button>
+            </div>
+
+            <!-- Indicador de Posición -->
+            <p id="image-counter" class="text-center text-gray-500 mt-4 italic text-xs sm:text-sm">
+                Foto 1 de 7 (Haz clic en la imagen para ver en pantalla completa)
+            </p>
+        </section>
+        
+        <div class="section-divider"></div>
+
+        <!-- Ficha Rápida y Precio + OPORTUNIDAD DE INVERSIÓN -->
+        <section class="mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-10 items-center">
+                <!-- Columna de Precio y Ficha Rápida -->
+                <div class="lg:col-span-3 bg-dark-secondary p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700">
+                    <div class="text-center lg:text-left">
+                        <p class="text-4xl sm:text-5xl font-extrabold text-white mb-2">
+                            $ 390.000.000 COP
+                        </p>
+                        <!-- Énfasis con acento Verde Esmeralda -->
+                        <p class="text-lg sm:text-xl text-accent-green font-medium mb-4">
+                            Precio de Venta <span class="text-accent-yellow">(Negociable con Apoyo en Crédito)</span>
+                        </p>
+                    </div>
+                    <!-- Grid que se adapta a 3 columnas en móvil y escritorio -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 text-center mt-4">
+                        <div class="p-2 sm:p-3 bg-gray-800 rounded-lg">
+                            <p class="text-2xl sm:text-3xl font-bold text-accent-yellow">8</p>
+                            <p class="text-xs sm:text-sm">Habitaciones</p>
+                        </div>
+                        <div class="p-2 sm:p-3 bg-gray-800 rounded-lg">
+                            <p class="text-2xl sm:text-3xl font-bold text-accent-yellow">2</p>
+                            <p class="text-xs sm:text-sm">Baños</p>
+                        </div>
+                        <div class="p-2 sm:p-3 bg-gray-800 rounded-lg">
+                            <p class="text-2xl sm:text-3xl font-bold text-accent-yellow">208 $m^2$</p>
+                            <p class="text-xs sm:text-sm">Construidos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Oportunidad de Inversión -->
+                <div class="lg:col-span-2 bg-accent-yellow/10 p-6 sm:p-8 rounded-2xl shadow-2xl border-2 border-accent-yellow text-center lg:text-left">
+                    <h4 class="text-2xl font-extrabold text-accent-yellow flex items-center justify-center lg:justify-start mb-2">
+                        <span class="mr-2">💰</span> Oportunidad de Inversión
+                    </h4>
+                    <ul class="text-gray-300 space-y-2 text-sm sm:text-base ml-2">
+                        <li class="flex items-start">
+                            <span class="text-accent-green font-bold mr-2 mt-0.5 text-lg">✓</span>
+                            <p>Genera <span class="font-semibold text-white">doble renta mensual</span> ($2.127.000 COP) desde el primer día.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent-green font-bold mr-2 mt-0.5 text-lg">✓</span>
+                            <p>Adquiere valorización asegurada al legalizar las mejoras (Cuerpo Cierto).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent-green font-bold mr-2 mt-0.5 text-lg">✓</span>
+                            <p>Ubicación privilegiada: **Frente a la Alcaldía Local** de R. Uribe Uribe (Solo cruzando la calle).</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="section-divider"></div>
+
+        <!-- Sección de Venta Persuasiva: Ventajas Clave (Aquí se modifican los puntos) -->
+        <section id="ventajas" class="mb-16">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-8 text-center">
+                ¿Por qué esta Casa es una <span class="text-accent-yellow">Oportunidad Única</span>?
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Ventaja 1: Doble Renta y Estabilidad (SE MANTIENE) -->
+                <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">💰</span>
+                    <h4 class="text-xl font-bold text-accent-green mb-2">Doble Renta Estable</h4>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Diseñada como **Vivienda Bifamiliar**. Vive en uno y arrienda el otro, o alquila ambos. <span class="font-semibold text-white">Ingreso estable por arriendo de $2.127.000 COP.</span>
+                    </p>
+                </div>
+
+                <!-- Ventaja 2: Espacio y Capacidad (SE MANTIENE) -->
+                <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🏡</span>
+                    <h4 class="text-xl font-bold text-accent-green mb-2">Máximo Espacio: 8 Habitaciones</h4>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Con <span class="font-semibold">208 $m^2$</span>, ideal para familia numerosa o para generar <span class="font-semibold text-white">múltiples ingresos</span>. Una de las propiedades más amplias y versátiles de la zona.
+                    </p>
+                </div>
+                
+                <!-- Ventaja 3: Financiación Asistida (SE MANTIENE) -->
+                <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🤝</span>
+                    <h4 class="text-xl font-bold text-accent-green mb-2">Apoyo en la Financiación</h4>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        El propietario puede apoyar al comprador a tramitar un préstamo, facilitando la compra **incluso con la hipoteca activa**. ¡Precio de venta negociable!
+                    </p>
+                </div>
+                
+                <!-- Ventaja 4: ACCESO CONTROLADO (NUEVO PUNTO DE ENTRADA) -->
+                <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🔒</span>
+                    <h4 class="text-xl font-bold text-accent-green mb-2">Área de Entrada Controlada</h4>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Cuenta con una zona de entrada **enrejada y amplia**, perfecta para la **seguridad y recepción**. Ideal para <span class="font-semibold text-white">guardar motos o bicicletas</span> de forma segura.
+                    </p>
+                </div>
+
+                <!-- Ventaja 5: INFRAESTRUCTURA DE RENTA (FUSIONADO Y ACTUALIZADO) -->
+                <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">⚡</span>
+                    <h4 class="text-xl font-bold text-accent-green mb-2">Independencia Total de Servicios</h4>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Máximo control de gastos: Cada unidad tiene **contador independiente de luz y gas**. Además, cuenta con un **medidor de agua interno** para cálculo exacto del consumo por apartamento.
+                    </p>
+                </div>
+                
+                <!-- Ventaja 6: POTENCIAL DE EXPANSIÓN (ACTUALIZADO CON EL TERCER CONTADOR) -->
+                <div class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-t-4 border-accent-green hover:shadow-accent-green/50 transition duration-300">
+                    <span class="text-4xl sm:text-5xl mb-3 block text-accent-yellow">🏗️</span>
+                    <h4 class="text-xl font-bold text-accent-green mb-2">Potencial de Expansión Inmediato</h4>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        La casa cuenta con la estructura para un **tercer piso**, y ya tiene un **tercer contador de energía** instalado y listo para usar en esa futura ampliación o construcción.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- El resto del contenido se mantiene igual -->
+
+        <div class="section-divider"></div>
+
+        <!-- Descripción Detallada y Distribución -->
+        <section id="descripcion" class="mb-8">
+            <!-- Título con acento Verde Esmeralda -->
+            <h3 class="text-2xl sm:text-3xl font-bold text-accent-green mb-6">Descripción de la Propiedad</h3>
+
+            <div class="bg-dark-secondary p-6 sm:p-8 rounded-2xl shadow-2xl">
+                <!-- Párrafo CLAVE con alto contraste para la restricción (EN AMARILLO) -->
+                <p class="text-base sm:text-xl text-accent-yellow font-bold mb-6" data-original-content>
+                    Linda casa en venta en el barrio **Quiroga Central**, ubicada en una tranquila <span class="underline">**CARRERA PEATONAL**</span> y <span class="underline">**SIN INGRESO VEHICULAR**</span>. Esto garantiza un entorno residencial seguro y libre de ruido.
+                </p>
+                <!-- Párrafo de Ubicación (Cercanía a la Alcaldía) -->
+                <p class="text-base sm:text-lg text-gray-300 mb-6">
+                    Su ubicación es excelente: está **a una calle de la Alcaldía Local** de Rafael Uribe Uribe, sobre la vía peatonal. Su configuración de **Vivienda Bifamiliar** garantiza flexibilidad y un retorno de inversión inmediato.
+                </p>
+                
+                <h4 class="text-xl sm:text-2xl font-semibold text-white mb-4">Distribución (Total: 8 Habitaciones, 2 Baños):</h4>
+                <!-- Párrafo enfatizando la distribución idéntica -->
+                <p class="text-base sm:text-lg text-gray-300 mb-4">
+                    **Inversión Optimizada:** Ambos apartamentos (Primer y Segundo Piso) tienen una distribución exactamente **IDÉNTICA**, facilitando la administración.
+                </p>
+                <ul class="list-disc list-inside space-y-3 text-gray-400 ml-4 text-sm sm:text-base">
+                    <li>
+                        <span class="font-bold text-accent-yellow">Cada Apartamento (x2) incluye:</span> 
+                        Cuatro (4) habitaciones, sala, comedor amplio, cocina, patio de ropas y un baño completo.
+                    </li>
+                </ul>
+
+                <!-- Bloque Secundario para Hipoteca -->
+                <div class="mt-6 p-4 bg-gray-800 rounded-lg border-l-4 border-accent-yellow">
+                    <h5 class="text-lg font-bold text-accent-yellow mb-2">SOLUCIÓN DE FINANCIACIÓN INMEDIATA</h5>
+                    <p class="text-gray-300 text-sm">
+                        La propiedad tiene una hipoteca activa, sin embargo, esto **no es un impedimento**. El propietario le **brinda apoyo directo** para gestionar un préstamo hipotecario con entidades de **tasas reguladas**, simplificando su proceso de compra.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETALLES IMPORTANTES Y LEGAL -->
+        <section id="detalles-legales" class="mb-16">
+            <h3 class="text-2xl sm:text-3xl font-bold text-highlight-blue mb-6">🔎 Información Legal y Técnica</h3>
+            
+            <div class="bg-highlight-blue/10 p-6 sm:p-8 rounded-2xl shadow-2xl border-2 border-highlight-blue">
+                <ul class="space-y-4 text-gray-300 text-sm sm:text-base">
+                    <!-- Detalle 1: Remodelación y Redes (MANTENIDO) -->
+                    <li class="flex items-start">
+                        <span class="text-accent-yellow text-xl font-extrabold mr-2">1.</span>
+                        <div>
+                            <span class="font-bold text-white">REMODELACIÓN RECIENTE:</span> La casa fue ampliada, remodelada y se renovaron por completo todas las redes vitales: **agua, alcantarillado, gas y energía eléctrica.**
+                        </div>
+                    </li>
+                    <!-- Detalle 2: Cuerpo Cierto y Bifamiliar (MANTENIDO) -->
+                    <li class="flex items-start">
+                        <span class="text-accent-yellow text-xl font-extrabold mr-2">2.</span>
+                        <div>
+                            <span class="font-bold text-white">VIVIENDA BIFAMILIAR:</span> Se adecuó con éxito como vivienda bifamiliar, con dos apartamentos totalmente independientes (actualmente rentados).
+                        </div>
+                    </li>
+                    <!-- Detalle 3: Cuerpo Cierto - El punto clave (MANTENIDO) -->
+                    <li class="flex items-start">
+                        <span class="text-accent-yellow text-xl font-extrabold mr-2">3.</span>
+                        <div>
+                            <span class="font-bold text-white">VENTA 'CUERPO CIERTO':</span> Se entrega tal como está, **incluyendo todas las mejoras visibles y habitables**. Las ampliaciones aún no se han registrado formalmente ante Catastro.
+                        </div>
+                    </li>
+                    <!-- Detalle 4: Oportunidad de Valorización (MANTENIDO) -->
+                    <li class="flex items-start bg-highlight-blue/20 p-3 rounded-lg mt-4">
+                        <span class="text-accent-green text-xl font-extrabold mr-2">💡</span>
+                        <div>
+                            <span class="font-bold text-accent-green">OPORTUNIDAD DE VALORIZACIÓN:</span> Esto representa una **excelente oportunidad de ganancia** para el nuevo propietario, pues las mejoras pueden legalizarse fácilmente con el acompañamiento de un profesional, incrementando el valor patrimonial y comercial.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <div class="section-divider"></div>
+        
+        <!-- SECCIÓN DE SEGMENTACIÓN: VIVIR VS. INVERTIR (Insertado según petición) -->
+        <section id="doble-enfoque" class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Bloque 1: PARA VIVIR -->
+            <div id="vivienda" class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-l-4 border-accent-green">
+                <h3 class="text-2xl font-bold text-accent-green mb-3 flex items-center">
+                    <span class="mr-2 text-3xl">🏡</span> Para Vivir (Hogar y Comodidad)
+                </h3>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    Vive en un sector central, tranquilo y con excelente movilidad.
+                    Ubicada justo frente a la Alcaldía Local de Rafael Uribe Uribe, esta casa en Quiroga Central te ofrece comodidad, seguridad y cercanía a todo: transporte (TransMilenio y SITP), colegios, parques, comercio y servicios.
+                    Su diseño bifamiliar permite disfrutar amplios espacios con independencia y privacidad, perfecta para familias que buscan crecer o vivir cerca de todo sin perder la tranquilidad del barrio.
+                </p>
+            </div>
+
+            <!-- Bloque 2: PARA INVERTIR -->
+            <div id="inversion" class="bg-dark-secondary p-6 rounded-xl shadow-2xl border-l-4 border-accent-yellow">
+                <h3 class="text-2xl font-bold text-accent-yellow mb-3 flex items-center">
+                    <span class="mr-2 text-3xl">💰</span> Para Invertir (Renta y Valorización)
+                </h3>
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    Una propiedad con doble renta inmediata y alto potencial de valorización.
+                    En un sector de alta demanda como Quiroga Central, esta casa bifamiliar ofrece dos apartamentos independientes, cada uno con servicios separados, ideal para arrendar y generar ingresos constantes.
+                    Además, ya cuenta con un tercer contador instalado, preparado para una futura ampliación.
+                    Su ubicación frente a la Alcaldía y cerca de TransMilenio garantiza ocupación continua y crecimiento seguro en el valor del inmueble.
+                </p>
+            </div>
+        </section>
+
+        <!-- PÁRRAFO EMOCIONAL DE CIERRE -->
+        <section class="text-center mb-16 p-6 sm:p-8 bg-dark-secondary/50 rounded-2xl border border-gray-700">
+            <p class="text-lg sm:text-2xl italic font-light text-gray-200">
+                <span class="font-semibold text-accent-yellow">🏡 Una casa amplia, remodelada y lista para disfrutar.</span> 
+                Perfecta para familias que valoran la ubicación, la tranquilidad y la oportunidad de crecer con una **inversión segura** y de doble retorno.
+            </p>
+        </section>
+
+
+        <!-- Call to Action Final (Contacto) -->
+        <!-- Fondo con acento Verde Esmeralda para mayor impacto -->
+        <section id="contacto" class="text-center bg-accent-green/10 p-8 sm:p-10 rounded-2xl shadow-2xl border border-accent-green">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                ¡Agenda tu Visita Hoy!
+            </h3>
+            <p class="text-base sm:text-xl text-gray-300 mb-6">
+                Recibe fotos adicionales, videos del interior y resuelve tus dudas de financiación.
+            </p>
+            <!-- Botón de CTA con acento Amarillo (El más alto contraste y acción) -->
+            <a href="#" target="_blank" id="whatsapp-link-final" class="inline-block bg-accent-yellow text-gray-900 text-xl sm:text-2xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-lg shadow-2xl hover:bg-amber-300 transition duration-300 transform hover:scale-105">
+                📞 Contáctame al WhatsApp (322 700 2789)
+            </a>
+            <p class="mt-4 text-xs sm:text-sm text-gray-400">
+                Valor $390.000.000 negociables. Asesor: José Jimy Guluma Criollo.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- MODAL (Galería a pantalla completa) -->
+    <div id="image-modal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 flex flex-col justify-center items-center">
+        <!-- Botón de cierre -->
+        <span class="close-button" id="close-modal">&times;</span>
+        
+        <!-- Contenido del modal: Imagen y botones de navegación grandes -->
+        <div class="relative w-full h-full flex justify-center items-center">
+            
+            <!-- Imagen en grande -->
+            <img id="modal-content" src="" alt="Galería de imágenes en pantalla completa" class="max-w-[95vw] max-h-[85vh] object-contain">
+            
+            <!-- Botón de navegación PREV (dentro del modal) -->
+            <span id="modal-prev" class="modal-nav-button select-none">&lt;</span>
+            
+            <!-- Botón de navegación NEXT (dentro del modal) -->
+            <span id="modal-next" class="modal-nav-button select-none">&gt;</span>
+        </div>
+    </div>
+
+
+    <!-- Script para el Carrusel y Personalización -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.getElementById('main-image');
+            const mainImageViewer = document.getElementById('main-image-viewer');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            const imageCounter = document.getElementById('image-counter');
+            
+            // Elementos del Modal
+            const imageModal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-content');
+            const closeModalBtn = document.getElementById('close-modal');
+            const modalPrevBtn = document.getElementById('modal-prev');
+            const modalNextBtn = document.getElementById('modal-next');
+
+            let currentIndex = 0;
+            let imageLinks = [
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d899c06b8_infocdn__aavkwtdhlv441qcxcdfqlovazgmrztbmabazzttcjpg.jpg", // 1. Fachada (Principal)
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d89c99cb2_infocdn__k6zug8we4vyg9vzcrvb7jnmsr0j4izgdm9gbio0pjpg.jpg", // 2. Segundo Piso
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d89d49d9a_infocdn__gycmfesei9cxxkop8ceusyotynfyzcibhu91iexpjpg.jpg", // 3. Habitación 1
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d89e1e773_infocdn__ktwlxu2fhnzqoo1jchbu8dq65swuco2d4xuxinpejpg.jpg", // 4. Habitación 2
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d8a153598_infocdn__soxx1su5rj8iyttmectjk07hoqmykjsdeyoavakhjpg.jpg", // 5. Habitación 3
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d89f62256_infocdn__cpcrk4ibjlvzpkzhathvjn0jwzhdcwryhg6ig3ozjpg.jpg",  // 6. Baño
+                "https://cdn4.fincaraiz.com.co/repo/img/th.outside1200x1200.68c7d8a003049_infocdn__pq6ozgia7flclthhaym5y5pwafrv2k4yk2nylynijpg.jpg"   // 7. Patio
+            ];
+
+            // Función para ajustar dinámicamente la altura del visor según el contenedor
+            const adjustViewerHeight = () => {
+                const viewerWidth = mainImageViewer.clientWidth;
+                const minHeight = 350; 
+                const maxHeight = window.innerHeight * 0.8; 
+                
+                let newHeight = viewerWidth * 0.6; 
+
+                if (newHeight < minHeight) {
+                    newHeight = minHeight;
+                }
+                if (newHeight > maxHeight) {
+                    newHeight = maxHeight;
+                }
+                
+                mainImageViewer.style.height = `${newHeight}px`;
+            };
+
+
+            // Función principal para mostrar la imagen actual (tanto en la vista normal como en el modal)
+            const showImage = (index) => {
+                if (imageLinks.length === 0) return;
+
+                currentIndex = (index + imageLinks.length) % imageLinks.length;
+                const newSrc = imageLinks[currentIndex];
+                
+                // 1. Actualizar imagen principal en la página
+                mainImage.src = newSrc;
+                // Llamar al ajuste de altura
+                setTimeout(adjustViewerHeight, 50); 
+
+                // 2. Actualizar imagen en el modal (si está abierto)
+                if (imageModal.classList.contains('active')) {
+                    modalImage.src = newSrc;
+                }
+
+                // 3. Actualizar el contador
+                imageCounter.textContent = `Foto ${currentIndex + 1} de ${imageLinks.length} (Haz clic en la imagen para ver en pantalla completa)`;
+                
+            };
+
+            // Lógica del Modal
+            const openModal = () => {
+                modalImage.src = imageLinks[currentIndex]; // Carga la imagen actual
+                imageModal.style.display = 'flex';
+                imageModal.classList.add('active'); // Clase de estado para la lógica de navegación
+                document.body.style.overflow = 'hidden'; // Evita el scroll de la página principal
+            };
+
+            const closeModal = () => {
+                imageModal.style.display = 'none';
+                imageModal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restaura el scroll
+            };
+
+            // Eventos del Carrusel (Vista normal)
+            prevButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que se dispare el evento de abrir el modal
+                showImage(currentIndex - 1);
+            });
+
+            nextButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que se dispare el evento de abrir el modal
+                showImage(currentIndex + 1);
+            });
+            
+            // Evento para abrir el modal al hacer clic en la imagen
+            mainImageViewer.addEventListener('click', openModal);
+
+            // Eventos del Modal
+            closeModalBtn.addEventListener('click', closeModal);
+            modalPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                showImage(currentIndex - 1);
+            });
+            modalNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                showImage(currentIndex + 1);
+            });
+
+            // Cerrar el modal al hacer clic fuera de la imagen (en el fondo)
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal || e.target === closeModalBtn) {
+                    closeModal();
+                }
+            });
+
+            // Evento para cambiar de imagen con las flechas del teclado (funciona en ambas vistas)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    showImage(currentIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    showImage(currentIndex + 1);
+                } else if (e.key === 'Escape') {
+                    if (imageModal.classList.contains('active')) {
+                        closeModal();
+                    }
+                }
+            });
+
+
+            // 3. Inicialización: Carga de fotos y configuración de WhatsApp
+            
+            // Mostrar la primera imagen al iniciar
+            showImage(0);
+
+
+            // [PASO 2] - CONFIGURACIÓN DE WHATSAPP (Mantenido y adaptado al nuevo CTA)
+            const numeroWhatsApp = '573227002789'; // Número de José Jimy Guluma Criollo
+            const asesorName = 'José Jimy Guluma Criollo';
+            const mensajeBase = `¡Hola ${asesorName}! Me interesa la casa en Quiroga Central (Código 192871339) que vi y entiendo que es PEATONAL. Me gustaría recibir más fotos y agendar mi visita.`;
+            const mensajeEncoded = encodeURIComponent(mensajeBase);
+            const fullWhatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${mensajeEncoded}`;
+
+            const whatsappLinkHeader = document.querySelector('header a');
+            const whatsappLinkFinal = document.getElementById('whatsapp-link-final');
+
+            if (whatsappLinkHeader) {
+                whatsappLinkHeader.href = fullWhatsappUrl;
+            }
+            if (whatsappLinkFinal) {
+                whatsappLinkFinal.href = fullWhatsappUrl;
+            }
+
+
+            // Asegurar el ajuste de altura al cambiar el tamaño de la ventana (para adaptabilidad móvil)
+            window.addEventListener('resize', adjustViewerHeight);
+            // Llamar al ajuste inicial
+            adjustViewerHeight();
+        });
+    </script>
+
+</body>
+</html>
